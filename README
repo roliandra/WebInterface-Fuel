@@ -1,5 +1,13 @@
 == INSTALLATION ==
-To install FUEL CMS, copy the contents of this folder to a web accessible 
-folder and browse to the index.php file. Next, follow the directions on the 
+To install Web Auction, copy the contents of this folder to a web accessible 
+folder.
+
+Open the database config folder located at /fuel/application/config/database.php and add the connection details for
+your mysql database.
+
+Open your database configuration and import the sql file located at /fuel/install/minecraft.sql, this will create all
+the necessary tables and data.
+
+Browse to the index.php file of your website and follow the directions on the 
 screen. 
 
