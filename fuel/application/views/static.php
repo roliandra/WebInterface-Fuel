@@ -42,7 +42,7 @@
 			}
 			if ($CI->session->userdata('is_admin') == 1){
 				?>
-                	<h3 align="center"><a href="/static_edit">Edit Static Prices</a></h3><br/>
+                	<h3 align="center"><a href="<?php echo $this->config->item('base_url'); ?>static_edit">Edit Static Prices</a></h3><br/>
                 <?php	
 			}
 			
