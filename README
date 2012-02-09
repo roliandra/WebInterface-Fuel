@@ -8,6 +8,11 @@ your mysql database.
 Open your database configuration and import the sql file located at /fuel/install/minecraft.sql, this will create all
 the necessary tables and data.
 
+If the webauction folder is not at the root of your website domain eg. http://mysite.com/auction/ then you will need to
+edit the .htaccess file in the root of your WebAuction folder so that Line 4 looks like: 
+RewriteBase /auction/
+If your subdomain is /auction/ as in the example given.
+
 Browse to the index.php file of your website and follow the directions on the 
 screen. 
 
