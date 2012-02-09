@@ -26,7 +26,7 @@ class Trade extends CI_Controller
 
 	function index()
 	{
-		redirect('/');
+		redirect('');
 	}
 	function mail_item()
 	{
@@ -41,14 +41,14 @@ class Trade extends CI_Controller
 				$this->mail_model->new_mail($item_info[0]->item_id, $user_data->id, $item_info[0]->quantity);
 				$this->player_items_model->delete_item($item_info[0]->id);
 				$this->session->set_msg("Success! Items send to in-game mail box.");
-				redirect('/items');
+				redirect('items');
 			}else{
 				$this->session->set_error("That is not your item, so I will not mail it to you.");	
-				redirect('/items');	
+				redirect('items');	
 			}
 		}else{
 			$this->session->set_error("Please log in before trying to do that.");	
-			redirect('/login');	
+			redirect('login');	
 		}
 	}
 	function buy_static()
@@ -102,30 +102,30 @@ class Trade extends CI_Controller
 								
 								
 								$this->session->set_msg("Success! Items bought.");
-								redirect('/static');	
+								redirect('static');	
 							}else{
 								$this->session->set_error("That quantity didn't look like a proper number to me.");	
-								redirect('/static');
+								redirect('static');
 							}
 						}else{
 							$this->session->set_error("That quantity didn't look like a proper number to me.");	
-							redirect('/static');
+							redirect('static');
 						}
 					}else{
 						$this->session->set_error("That quantity didn't look like a proper number to me.");	
-						redirect('/static');
+						redirect('static');
 					}
 				}else{
 					$this->session->set_error("Sorry we are not selling that item.");	
-					redirect('/static');
+					redirect('static');
 				}
 			}else{
 				$this->session->set_error("You do not have permission to buy static items");
-				redirect('/static');
+				redirect('static');
 			}
 		}else{
 			$this->session->set_error("Please log in before trying to do that.");	
-			redirect('/static');
+			redirect('static');
 		}
 	}
 	function sell_static()
@@ -179,34 +179,34 @@ class Trade extends CI_Controller
 									}
 									
 									$this->session->set_msg("Success! Items sold.");
-									redirect('/static');	
+									redirect('static');	
 								}else{
 									$this->session->set_error("You do not have that many items to sell.");
-									redirect('/static');	
+									redirect('static');	
 								}
 							}else{
 								$this->session->set_error("You do not have any of that item to sell.");
-								redirect('/static');
+								redirect('static');
 							}	
 						}else{
 							$this->session->set_error("That quantity didn't look like a proper number to me.");
-							redirect('/static');
+							redirect('static');
 						}
 					}else{
 						$this->session->set_error("That quantity didn't look like a proper number to me.");	
-						redirect('/static');
+						redirect('static');
 					}
 				}else{
 					$this->session->set_error("Sorry you are not allowed to sell that item.");	
-					redirect('/static');	
+					redirect('static');	
 				}
 			}else{
 				$this->session->set_error("You do not have permission to sell items to the server.");
-				redirect('/static');	
+				redirect('static');	
 			}
 		}else{
 			$this->session->set_error("Please log in before doing that.");	
-			redirect('/static');
+			redirect('static');
 		}
 	}
 	function buy_item()
@@ -272,33 +272,33 @@ class Trade extends CI_Controller
 										$this->market_model->set_price($market_price[0]->id, $current_count + $quant, $new_market_price);
 									}
 									$this->session->set_msg("Success! Items bought.");
-									redirect('/auctions');	
+									redirect('auctions');	
 								}else{
 									$this->session->set_error("Sorry but you are not allowed to buy your own items. Forever alone.");
-									redirect('/auctions'); //can't buy own items		
+									redirect('auctions'); //can't buy own items		
 								}
 							}else{
 								$this->session->set_error("You do not appear to have enough money to buy those items.");
-								redirect('/auctions'); //not enough money
+								redirect('auctions'); //not enough money
 							}
 						}else{
 							$this->session->set_error("That doesn't work, you are trying to buy more items than are available.");
-							redirect('/auctions'); //quantity too big	
+							redirect('auctions'); //quantity too big	
 						}
 					}else{
 						$this->session->set_error("What was with those letters/symbols? That makes no sense, just a number please.");
-						redirect('/auctions'); //quantity negative	
+						redirect('auctions'); //quantity negative	
 					}
 				}else{
 					$this->session->set_error("What was with those letters/symbols? That makes no sense, just a number please.");
-					redirect('/auctions'); //quantity negative	
+					redirect('auctions'); //quantity negative	
 				}
 			}else{
 				$this->session->set_error("You do not have permission to buy items from player auctions.");	
-				redirect('/auctions');
+				redirect('auctions');
 			}
 		}else{
-			redirect('/login');	
+			redirect('login');	
 		}
 	}
 	function set_buy_static()
@@ -318,12 +318,12 @@ class Trade extends CI_Controller
 				}else{
 					$this->static_model->new_static_buy($item_id, $buy);	
 				}	
-				redirect('/static_edit');
+				redirect('static_edit');
 			}else{
-				redirect('/static');	
+				redirect('static');	
 			}
 		}else{
-			redirect('/static');	
+			redirect('static');	
 		}
 	}
 	function set_sell_static()
@@ -343,12 +343,12 @@ class Trade extends CI_Controller
 				}else{
 					$this->static_model->new_static_sell($item_id, $sell);	
 				}	
-				redirect('/static_edit');
+				redirect('static_edit');
 			}else{
-				redirect('/static');	
+				redirect('static');	
 			}
 		}else{
-			redirect('/static');	
+			redirect('static');	
 		}
 	}
 	function new_static()
@@ -377,38 +377,38 @@ class Trade extends CI_Controller
 											$this->player_items_model->delete_item($item_info[0]->id);	
 										}
 										$this->session->set_msg("Success! Auction created.");
-										redirect('/myauctions');							
+										redirect('myauctions');							
 									}else{
 										$this->session->set_error("Please enter a valid number for the quantity.");
-										redirect('/myauctions'); //quant not a number	
+										redirect('myauctions'); //quant not a number	
 									}
 								}else{
 									$this->session->set_error("Please enter a valid number for the price.");
-									redirect('/myauctions'); //price not a number	
+									redirect('myauctions'); //price not a number	
 								}
 							}else{
 								$this->session->set_error("You cannot sell more items than you own, they don't grow on trees you know.");
-								redirect('/myauctions'); //not enough items	
+								redirect('myauctions'); //not enough items	
 							}
 						}else{
 							$this->session->set_error("Huh? You don't even own that item, how would you like it if I tried to sell your house?");
-							redirect('/myauctions');	//don't own item
+							redirect('myauctions');	//don't own item
 						}
 					}else{
 						$this->session->set_error("Please do not try and sell a negative number of items, We do not want to give you free items.");
-						redirect('/myauctions');  //negative quant
+						redirect('myauctions');  //negative quant
 					}
 				}else{
 					$this->session->set_error("I don't get what you are trying to do here. Positive numbers for the price only please.");
-					redirect('/myauctions');  //negative price
+					redirect('myauctions');  //negative price
 				}
 			}else{
 				$this->session->set_error("You are not an admin, so you are not allowed to create infinite sale prices.");
-				redirect('/static');
+				redirect('static');
 			}
 		}else{
 			$this->session->set_error("Please log in to be able to create auctions.");
-			redirect('/myauctions');  //not logged in
+			redirect('myauctions');  //not logged in
 		}
 	}
 	function cancel_auction()
@@ -432,7 +432,7 @@ class Trade extends CI_Controller
 				}
 				$this->auctions_model->delete_auction($auction_info[0]->id);
 				$this->session->set_msg("Success! Auction removed.");
-				redirect('/myauctions');
+				redirect('myauctions');
 			}
 			else if ($is_admin)
 			{
@@ -446,12 +446,12 @@ class Trade extends CI_Controller
 				}
 				$this->auctions_model->delete_auction($auction_info[0]->id);
 				$this->session->set_msg("Success! Auction removed.");
-				redirect('/auctions');
+				redirect('auctions');
 			}
 			else
 			{
 				$this->session->set_error("You do not have permission to cancel this auction.");
-				redirect('/myauctions'); //quant not a number	
+				redirect('myauctions'); //quant not a number	
 			}
 		}
 	}
@@ -482,38 +482,38 @@ class Trade extends CI_Controller
 											$this->player_items_model->delete_item($item_info[0]->id);	
 										}
 										$this->session->set_msg("Success! Auction created.");
-										redirect('/myauctions');							
+										redirect('myauctions');							
 									}else{
 										$this->session->set_error("Please enter a valid number for the quantity.");
-										redirect('/myauctions'); //quant not a number	
+										redirect('myauctions'); //quant not a number	
 									}
 								}else{
 									$this->session->set_error("Please enter a valid number for the price.");
-									redirect('/myauctions'); //price not a number	
+									redirect('myauctions'); //price not a number	
 								}
 							}else{
 								$this->session->set_error("You cannot sell more items than you own, they don't grow on trees you know.");
-								redirect('/myauctions'); //not enough items	
+								redirect('myauctions'); //not enough items	
 							}
 						}else{
 							$this->session->set_error("Huh? You don't even own that item, how would you like it if I tried to sell your house?");
-							redirect('/myauctions');	//don't own item
+							redirect('myauctions');	//don't own item
 						}
 					}else{
 						$this->session->set_error("Please do not try and sell a negative number of items, We do not want to give you free items.");
-						redirect('/myauctions');  //negative quant
+						redirect('myauctions');  //negative quant
 					}
 				}else{
 					$this->session->set_error("I don't get what you are trying to do here. Positive numbers for the price only please.");
-					redirect('/myauctions');  //negative price
+					redirect('myauctions');  //negative price
 				}
 			}else{
 				$this->session->set_error("You do not have permission to create new auctions.");
-				redirect('/myauctions');	
+				redirect('myauctions');	
 			}
 		}else{
 			$this->session->set_error("Please log in to be able to create auctions.");
-			redirect('/myauctions');  //not logged in
+			redirect('myauctions');  //not logged in
 		}
 	}
 }

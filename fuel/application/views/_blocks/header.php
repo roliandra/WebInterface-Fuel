@@ -26,11 +26,11 @@
 	?>
 	<base href="<?php echo site_url()?>" />
 	<style type="text/css" title="currentStyle">
-			@import "/fuel/modules/fuel/assets/css/table_jui.css";
-			@import "/fuel/modules/fuel/assets/css/start/jquery-ui-1.8.16.custom.css";
+			@import "<?php echo $this->config->item('base_url'); ?>fuel/modules/fuel/assets/css/table_jui.css";
+			@import "<?php echo $this->config->item('base_url'); ?>fuel/modules/fuel/assets/css/start/jquery-ui-1.8.16.custom.css";
 	</style>
-	<script type="text/javascript" language="javascript" src="/fuel/modules/fuel/assets/js/jquery/jquery.js"></script>
-	<script type="text/javascript" language="javascript" src="/fuel/modules/fuel/assets/js/jquery/plugins/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="<?php echo $this->config->item('base_url'); ?>fuel/modules/fuel/assets/js/jquery/jquery.js"></script>
+	<script type="text/javascript" language="javascript" src="<?php echo $this->config->item('base_url'); ?>fuel/modules/fuel/assets/js/jquery/plugins/jquery.dataTables.js"></script>
 	<script type="text/javascript" charset="utf-8">
       $(document).ready(function() {
 				oTable = $('#example').dataTable({
@@ -99,7 +99,7 @@
 <div id="userInfoBox">
         	<h2>User Info</h2>
             <?php if(!$CI->tank_auth->is_logged_in()){ ?>
-    <p><a href="/login">[Login]</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="/register">[Register]</a></p>
+    <p><a href="<?php echo $this->config->item('base_url'); ?>login">[Login]</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $this->config->item('base_url'); ?>register">[Register]</a></p>
     <?php } else { ?>
        	<table width="100%" border="0">
   <tr>
@@ -126,8 +126,8 @@
 	?></td>
   </tr>
   <tr>
-    <td><a href="/auth/logout">[Logout]</a></td>
-    <td align="left"><a href="/change_email">[Change Email]</a></td>
+    <td><a href="<?php echo $this->config->item('base_url'); ?>auth/logout">[Logout]</a></td>
+    <td align="left"><a href="<?php echo $this->config->item('base_url'); ?>change_email">[Change Email]</a></td>
   </tr>
   </table>
 

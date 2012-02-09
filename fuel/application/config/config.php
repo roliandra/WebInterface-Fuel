@@ -36,6 +36,7 @@ if ($_SERVER['SERVER_PORT'] == '443' OR $_SERVER['SERVER_PORT'] == '80')
 	else
 	{
 		$config['base_url'] = "http://".$_base_path;
+		
 	}
 }
 else

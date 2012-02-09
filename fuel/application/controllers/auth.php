@@ -18,7 +18,7 @@ class Auth extends CI_Controller
 		if ($message = $this->session->flashdata('message')) {
 			$this->load->view('auth/general_message', array('message' => $message));
 		} else {
-			redirect('/auth/login/');
+			redirect('auth/login/');
 		}
 	}
 
@@ -33,12 +33,12 @@ class Auth extends CI_Controller
 			//redirect('');
 			?>
 			<script>
-				parent.location.href = '/';
+				parent.location.href = '<?php echo $this->config->item('base_url'); ?>';
 			</script>
             <?php
 
 		} elseif ($this->tank_auth->is_logged_in(FALSE)) {						// logged in, not activated
-			redirect('/auth/send_again/');
+			redirect('auth/send_again/');
 
 		} else {
 			$data['login_by_username'] = ($this->config->item('login_by_username', 'tank_auth') AND
@@ -75,7 +75,7 @@ class Auth extends CI_Controller
 						$data['login_by_email'])) {								// success
 					?>
 					<script>
-						parent.location.href = '/';
+						parent.location.href = '<?php echo $this->config->item('base_url'); ?>';
 					</script>
             		<?php
 
@@ -85,7 +85,7 @@ class Auth extends CI_Controller
 						$this->_show_message($this->lang->line('auth_message_banned').' '.$errors['banned']);
 
 					} elseif (isset($errors['not_activated'])) {				// not activated user
-						redirect('/auth/send_again/');
+						redirect('auth/send_again/');
 						
 
 					} else {													// fail
@@ -119,7 +119,7 @@ class Auth extends CI_Controller
 
 		?>
 					<script>
-						parent.location.href = '/';
+						parent.location.href = '<?php echo $this->config->item('base_url'); ?>';
 					</script>
             		<?php
 	}
@@ -140,7 +140,7 @@ class Auth extends CI_Controller
             <?php
 
 		} elseif ($this->tank_auth->is_logged_in(FALSE)) {						// logged in, not activated
-			redirect('/auth/send_again/');
+			redirect('auth/send_again/');
 
 		} elseif (!$this->config->item('allow_registration', 'tank_auth')) {	// registration is off
 			$this->_show_message($this->lang->line('auth_message_registration_disabled'));
@@ -221,7 +221,7 @@ class Auth extends CI_Controller
 	function send_again()
 	{
 		if (!$this->tank_auth->is_logged_in(FALSE)) {							// not logged in or activated
-			redirect('/auth/login/');
+			redirect('auth/login/');
 
 		} else {
 			$this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email');
@@ -281,7 +281,7 @@ class Auth extends CI_Controller
 			//redirect('');
 			?>
 			<script>
-				parent.location.href = '/';
+				parent.location.href = '<?php echo $this->config->item('base_url'); ?>';
 			</script>
             <?php
 
@@ -366,7 +366,7 @@ class Auth extends CI_Controller
 	function change_password()
 	{
 		if (!$this->tank_auth->is_logged_in()) {								// not logged in or not activated
-			redirect('/auth/login/');
+			redirect('auth/login/');
 
 		} else {
 			$this->form_validation->set_rules('old_password', 'Old Password', 'trim|required|xss_clean');
@@ -398,7 +398,7 @@ class Auth extends CI_Controller
 	function change_email()
 	{
 		if (!$this->tank_auth->is_logged_in()) {								// not logged in or not activated
-			redirect('/auth/login/');
+			redirect('auth/login/');
 
 		} else {
 			$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
@@ -457,7 +457,7 @@ class Auth extends CI_Controller
 	function unregister()
 	{
 		if (!$this->tank_auth->is_logged_in()) {								// not logged in or not activated
-			redirect('/auth/login/');
+			redirect('auth/login/');
 
 		} else {
 			$this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
@@ -487,7 +487,7 @@ class Auth extends CI_Controller
 	function _show_message($message)
 	{
 		$this->session->set_flashdata('message', $message);
-		redirect('/auth/');
+		redirect('auth/');
 	}
 
 	/**
