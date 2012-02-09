@@ -129,9 +129,9 @@ class Items_model extends Base_module_model {
 	function get_item_image($id, $damage, $base)
 	{
 		if ($base > 0){
-			return "/assets/images/".$id.".png";	
+			return $this->config->item('base_url')."assets/images/".$id.".png";	
 		}else{
-			return "/assets/images/".$id."-".$damage.".png";	
+			return $this->config->item('base_url')."assets/images/".$id."-".$damage.".png";	
 		}
 	}
 	function numberToRoman($num) 
