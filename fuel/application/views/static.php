@@ -53,15 +53,15 @@
 				<tr>
 					<th align="center">Item</th>
                     <th align="center">Market Price</th>
-                    <? if (isset($MyData)){ ?>
+                    <?php if (isset($MyData)){ ?>
                     <th align="center">My Quantity</th>
                     <?php } ?>
 					<th align="center">Buy Price (Each)</th>
-                    <? if (isset($MyData)){ ?>
+                    <?php if (isset($MyData)){ ?>
 					<th align="center">Buy</th>
                     <?php } ?>
                     <th align="center">Sell Price (Each)</th>
-                    <? if (isset($MyData)){ ?>
+                    <?php if (isset($MyData)){ ?>
                     <th align="center">Sell</th>
                     <?php } ?>
 				</tr>
@@ -100,15 +100,15 @@
 						?>
                         	</td>
 							<td align="center"><?php echo $mark; ?></td>
-                            <? if (isset($MyData)){ ?>
+                            <?php if (isset($MyData)){ ?>
                             <td align="center"><?php echo $my_quant; ?></td>
                             <?php } ?>
                             <td align="center"><?php if (isset($auction['buy'])) {echo $auction['buy'];}else{echo "N/A";} ?></td>
-                            <? if (isset($MyData)){ ?>
+                            <?php if (isset($MyData)){ ?>
                  	       <td align="center"><?php if (!isset($auction['buy'])) {echo "N/A";}else{ ?><form action='trade/buy_static' method='post'><input type='text' size="6" name='Quantity' onKeyPress='return numbersonly(this, event)' class='input'><input type='hidden' name='ID' value='<?php echo $auction['id']; ?>' /><input type='submit' value='Buy' class='button' /></form><?php } ?></td>
                            <?php } ?>
                            <td align="center"><?php if (isset($auction['sell'])) {echo $auction['sell'];}else{echo "N/A";} ?></td>
-                           <? if (isset($MyData)){ ?>
+                           <?php if (isset($MyData)){ ?>
                            <td align="center"><?php if (!isset($auction['sell'])) {echo "N/A";}else{?><form action='trade/sell_static' method='post'><input type='text' size="6" name='Quantity' onKeyPress='return numbersonly(this, event)' class='input'><input type='hidden' name='ID' value='<?php echo $auction['id']; ?>' /><input type='submit' value='Sell' class='button' /></form><?php } ?></td>
                            <?php } ?>
 						</tr>

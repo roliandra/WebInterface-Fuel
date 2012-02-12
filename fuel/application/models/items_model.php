@@ -474,6 +474,12 @@ class Items_model extends Base_module_model {
 					case 2:
 						return "Birchwood Leaves";
 						break;
+					case 5:
+						return "Redwood Leaves";
+						break;
+					case 6:
+						return "Birchwood Leaves";
+						break;
 					default:
 						return "Leaves";
 						break;
